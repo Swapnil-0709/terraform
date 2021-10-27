@@ -25,6 +25,7 @@ resource "aws_iam_role" "lambda-iam" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
+        "AWS": "arn:aws:iam::ACCOUNT_swap:user/swap"
         "Service": "lambda.amazonaws.com"
       },
       "Effect": "Allow",
