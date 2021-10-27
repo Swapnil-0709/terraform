@@ -8,7 +8,7 @@ data "archive_file" "lambda-zip" {
   output_path = "lambda.zip"
 }
 
-resource "aws_iam_role" "iam_for_lambda" {
+resource "aws_iam_role" "lambda-iam" {
   name = "lambda_iam"
   assume_role_policy = <<EOF
 {
