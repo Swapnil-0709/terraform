@@ -46,7 +46,7 @@ resource "aws_apigatewayv2_api" "lambda-api" {
 }
 
 resource "aws_apigatewayv2_stage" "lambda-stage" {
-  rest_api_id = aws_apigatewayv2_api.api.id
+  api_id = aws_apigatewayv2_api.api.id
   name = "$default"
   auto_deploy = true
 }
