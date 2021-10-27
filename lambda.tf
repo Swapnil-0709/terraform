@@ -52,7 +52,7 @@ resource "aws_apigatewayv2_stage" "lambda-stage" {
 }
 
 resource "aws_apigatewayv2_integration" "lambda-integration" {
-  api_id           = aws_apigatewayv2_api.api.id
+  api_id           = aws_apigatewayv2_api.lambda-api.id
   integration_type = "AWS_PROXY"
   integration_method        = "POST"
   integration_uri           = aws_lambda_function.lambda.invoke_arn
@@ -68,7 +68,7 @@ resource "aws_apigatewayv2_route" "lambda-route" {
 resource "aws_lambda_permission" "api-gw" {
   Statement_id = "AllowExecutionFromAPIGateway"
   action = "lambda:InvokeFunction"
-  function-name =aws_lambda_function.lambda.arn
+  function_name =aws_lambda_function.lambda.arn
   principal = "apigateway.amazonaws.com"
   source_arn = "${aws_apigatewayv2_api.lambda-api.execution_arn}/*/*/*"
 }
