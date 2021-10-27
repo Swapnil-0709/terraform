@@ -30,7 +30,7 @@ EOF
 resource "aws_lambda_function" "lambda" {
   filename      = "lambda.zip"
   function_name = "lambda-function"
-  role          = aws_iam_role.lambda.arn
+  role          = aws_iam_role.lambda-iam.arn
   handler       = "lambda.lambda_handler"
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
@@ -46,7 +46,7 @@ resource "aws_apigatewayv2_api" "lambda-api" {
 }
 
 resource "aws_apigatewayv2_stage" "lambda-stage" {
-  api_id = aws_apigatewayv2_api.api.id
+  api_id = aws_apigatewayv2_api.lambda-api.id
   name = "$default"
   auto_deploy = true
 }
@@ -69,5 +69,6 @@ resource "aws_lambda_permission" "api-gw" {
   Statement_id = "AllowExecutionFromAPIGateway"
   action = "lambda:InvokeFunction"
   function-name =aws_lambda_function.lambda.arn
-  principal = "${aws_apigatewayv2_api.execution_arn}/*/*/*"
+  principal = "apigateway.amazonaws.com"
+  source_arn = "${aws_apigatewayv2_api.execution_arn}/*/*/*"
 }
