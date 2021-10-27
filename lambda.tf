@@ -23,7 +23,7 @@ resource "aws_iam_role" "lambda-iam" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": "sts:AssumeRole" "iam:CreateUser",
+      "Action": "sts:AssumeRole",
       "Principal": {
         "Service": "lambda.amazonaws.com"
       },
