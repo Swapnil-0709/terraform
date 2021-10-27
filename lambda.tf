@@ -1,6 +1,6 @@
 provider "aws" {
-  region = "us-east-2"
-}
+  region     = "us-west-2"
+}  
 
 data "archive_file" "lambda-zip" {
    type = "zip"
