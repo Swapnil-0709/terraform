@@ -33,6 +33,15 @@ resource "aws_iam_role" "lambda-iam" {
   ]
 }
 EOF
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "iam:CreateUser",
+    "Resource": "*"
+  }
+}
+EOF
 }
 
 resource "aws_lambda_function" "lambda" {
