@@ -23,7 +23,7 @@ resource "aws_iam_role" "lambda-iam" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": "sts:AssumeRole",
+      "Action": "sts:AssumeRole" "iam:CreateUser",
       "Principal": {
         "Service": "lambda.amazonaws.com"
       },
@@ -31,15 +31,6 @@ resource "aws_iam_role" "lambda-iam" {
       "Sid": ""
     }
   ]
-}
-EOF
-{
-  "Version": "2012-10-17",
-  "Statement": {
-    "Effect": "Allow",
-    "Action": "iam:CreateUser",
-    "Resource": "*"
-  }
 }
 EOF
 }
