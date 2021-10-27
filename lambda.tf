@@ -1,11 +1,11 @@
 provider "aws" {
-   region ="us-east-2"
+  region ="us-east-2"
 }
 
 data "archive_file" "lambda-zip" {
-   type = "zip"
-   source_dir = "lambda"
-   output_path "lambda.zip"
+  type = "zip"
+  source_dir = "lambda"
+  output_path "lambda.zip"
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
